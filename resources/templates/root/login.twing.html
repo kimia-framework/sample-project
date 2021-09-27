@@ -1,0 +1,70 @@
+{% extends "layouts/base.twing.html" %}
+{# title #}
+{% block title%}
+{{__('login')}}
+{% endblock %}
+{% block head%}
+<style>
+   .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: calc(100% - 100px);
+   }
+
+   .container .card {
+      min-width: 300px;
+   }
+</style>
+{% endblock %}
+
+{# content #}
+{% block content%}
+<div class="container">
+   <div>
+      <!-- error message -->
+      {% if error is defined %}
+      <article class="message is-danger">
+         <div class="message-body">{{msg('error.' + error)}}</div>
+      </article>
+      {% endif %}
+      <article class="panel is-info">
+         <p class="panel-heading">
+            {{__('login')}}
+         </p>
+         <div class="panel-block" style="display: block;">
+            <form method="POST" action="">
+               <!-- email -->
+               <div class="field">
+                  <label class="label">{{__('email')}}</label>
+                  <div class="control has-icons-left has-icons-right">
+                     <input class="input" type="email" name="email" placeholder="name@example.com">
+                     <span class="icon is-small is-right">
+                        <i class="fas fa-envelope"></i>
+                     </span>
+                  </div>
+               </div>
+               <!-- password -->
+               <div class="field">
+                  <label class="label">{{__('password')}}</label>
+                  <div class="control has-icons-left has-icons-right">
+                     <input class="input" type="password" name="password">
+                     <span class="icon is-small is-right">
+                        <i class="fas fa-lock"></i>
+                     </span>
+                  </div>
+               </div>
+
+               <!-- buttons -->
+               <div class="buttons">
+                  <button type="submit" class="button is-primary">{{__('login')}}</button>
+                  {# <a href="{{route('signup')}}" class="button is-info is-light">{{__('signup')}}</a> #}
+               </div>
+            </form>
+         </div>
+
+      </article>
+   </div>
+</div>
+</div>
+{% endblock %}

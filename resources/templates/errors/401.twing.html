@@ -1,0 +1,55 @@
+<html>
+
+<head>
+   <title>{{__('401_error')}}</title>
+   <style>
+      @font-face {
+         font-family: mainFont;
+         src: url("{{asset('fonts/' + __('info.defaultFontName'))}}");
+      }
+
+      body {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         background: #d90764;
+         color: #eeeeee;
+         font-family: mainFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      img {
+         max-width: 80%;
+         max-height: 60%;
+         margin: 30px 5px;
+      }
+
+      .button {
+         background-color: rgb(197, 129, 27);
+         color: rgb(255, 255, 241);
+         border-radius: 5px;
+         cursor: pointer;
+         justify-content: center;
+         padding-bottom: calc(.5em - 1px);
+         padding-left: 1em;
+         padding-right: 1em;
+         padding-top: calc(.5em - 1px);
+         text-align: center;
+         white-space: nowrap;
+         text-decoration: none;
+         margiN: 0 5px;
+      }
+   </style>
+</head>
+
+<body dir="{{__('info.direction')}}">
+   <img src="{{asset('images/Astronaut.svg')}}">
+   <h1>{{__('401_error')}}</h1>
+   <p>{{__('401_error_des')}}</p>
+   <div>
+      <a class="button" href="{{route('login')}}">{{__('login')}}</a>
+      <a class="button" href="{{route('signup')}}">{{__('signup')}}</a>
+      <a class="button" href="{{route('home')}}">{{__('home')}}</a>
+   </div>
+</body>
+
+</html>

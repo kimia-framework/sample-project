@@ -1,0 +1,39 @@
+{
+  "name": "kimia-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b tsconfig.json && webpack --progress --hot --config ./webpack.config.js --mode production",
+    "start": "tsc -b tsconfig.json && node build/core/index.js",
+    "dev": "concurrently \"tsc -b -w tsconfig.json\" \"nodemon --ext 'ts' --trace-warnings build/core/index.js dev\"",
+    "dev1": "tsc -b tsconfig.json && node --trace-warnings build/core/index.js dev"
+  },
+  "private": true,
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jalali-moment": "^3.3.10",
+    "jszip": "^3.7.1",
+    "markdown-it": "^12.2.0",
+    "moment": "^2.29.1",
+    "multer": "^1.4.2",
+    "mysql2": "^2.3.0",
+    "nodemailer": "^6.6.3",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2",
+    "tslib": "^2.2.0",
+    "twing": "^5.0.2",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/express": "^4.17.11",
+    "@types/markdown-it": "^12.2.1",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^14.10.2",
+    "@types/sequelize": "^4.28.9",
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
+  }
+}

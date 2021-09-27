@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-y: auto;">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <meta name="viewport" content="width=device-width" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="icon" type="image/png" href="{{asset('/images/favicon.png')}}" />
+   <title>
+      {{__('site_name')}}
+   </title>
+
+   <!-- font defined -->
+   <style>
+      /* @font-face {
+         font-family: mainFont;
+         src: url("{{asset('/fonts/' + __('info.defaultFontName'))}}");
+      } */
+
+      .navbar {
+         transition: all 0.3s;
+      }
+
+      #base_main_content {
+         min-height: 300px;
+         padding-top: 60px;
+      }
+   </style>
+   <!-- styles -->
+   <link rel="stylesheet" href="{{asset('/fonts/font-awesome-5/css/fontawesome-all.min.css')}}" />
+   <link rel="stylesheet" href="{{asset('/css/bulma.' + __('info.direction') + '.min.css')}}" />
+
+   <!-- scripts -->
+
+   <script src="{{asset('/js/vue.min.js')}}"></script>
+   {% block head %}{% endblock %}
+
+</head>
+
+<body style="direction:{{__('info.direction')}}">
+   <!-- navbar -->
+   <nav class=" px-1 navbar is-fixed-top {{navbar_class is defined ? navbar_class : ''}}" role="navigation"
+      aria-label="main navigation">
+      <div class="navbar-brand">
+         <a class="navbar-item" href="#">
+            <img src="{{asset('/images/logo.svg')}}" style="max-height: 40px;">
+         </a>
+
+         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+         </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+         <div class="navbar-start">
+            <a class="navbar-item" href="{{route('home')}}">
+               {{__('home')}}
+            </a>
+         </div>
+
+         <div class="navbar-end">
+            <div class="navbar-item ">
+               <div class="buttons">
+                  <!-- if user login -->
+                  {% if request.isAuth %}
+                  <div class="navbar-item has-dropdown is-hoverable ">
+                     <a class="navbar-link is-arrowless">
+                        <figure class="image is-32x32">
+                           <img class="is-rounded" src="{{asset('/images/avatar.png')}}">
+                        </figure>
+                     </a>
+
+                     <div class="navbar-dropdown is-left" style="left:0;right: unset">
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="{{route('logout')}}">
+                           <span>{{__('logout')}}</span>
+                        </a>
+                     </div>
+                  </div>
+                  {% else %}
+                  <!-- if not login -->
+                  <a href="{{route('login')}}" class="button is-primary">
+                     <strong>{{__('login')}}</strong>
+                  </a>
+                  {% endif %}
+               </div>
+            </div>
+         </div>
+      </div>
+   </nav>
+   <div id="base_main_content">
+      {% block content %}{% endblock %}
+   </div>
+
+   <!--main footer-->
+   {# <div style="margin: auto 2%;margin-top: -30px;border-top: 0px solid #eee;padding-top: 10px;overflow: auto;">
+   </div>
+   <div style="text-align: center;font-size: small;opacity: 0.6;color: deeppink;font-weight: bold;">
+      {{__("version")}}&nbsp;{{env('SITE_INFO')['version']}}
+   </div>
+   </div> #}
+   <!-- main scripts-->
+   <script src="{{asset('/js/jquery3.js')}}"></script>
+   <script>
+      $(document).ready(function () {
+
+         // Check for click events on the navbar burger icon
+         $(".navbar-burger").click(function () {
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+         });
+         $('body').on('scroll', () => {
+            var top = $('body').scrollTop();
+            // if (bodyScroll) {
+            //    bodyScroll(top);
+            // }
+            // console.log('gggg')
+            if (top > 100) {
+               $('.navbar').css('box-shadow', '0 3px 10px 0 rgba(0, 0, 0, 0.2)');
+            } else {
+               $('.navbar').css('box-shadow', 'unset');
+            }
+         });
+
+
+
+         // $('.has-dropdown.is-is-hoverable').click(() => {
+         //    this.toggleClass('is-active')
+         // })
+
+      });
+
+      function resendVerifyEmail() {
+         $.get("{{route('resend_verify_email')}}");
+         $('#verify_email_alert').remove();
+      }
+
+
+   </script>
+   {% block scripts %}{% endblock %}
+
+</body>
+
+</html>
