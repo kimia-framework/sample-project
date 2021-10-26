@@ -1,0 +1,3 @@
+# used by 'zip' command, ignore directories and files
+# like resources/articles
+# or like app/TODO.md
