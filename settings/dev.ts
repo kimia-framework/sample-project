@@ -39,7 +39,7 @@ export function load(): KimiaSettings<ProjectSettings> {
       PUBLIC_MIDDLEWARES: [
          // 'UploadFile',
          'RequestInit',
-         // 'SessionCookie',
+         'SessionCookie',
          'XPoweredBy',
          'StaticFiles',
          'RoutingResolver',
@@ -71,6 +71,7 @@ export function load(): KimiaSettings<ProjectSettings> {
          'CoreFile',
          'CoreLog',
          'CoreSession',
+         'CoreUser',
       ],
 
       DATABASE_INFO: {

@@ -9,4 +9,8 @@ export const LANG = {
       'version': 'version',
       'home': 'Home',
       'login': 'Login',
+      signup: 'Sign up',
+      alias: 'Alias',
+      email: 'Email',
+      password: 'Password',
 };

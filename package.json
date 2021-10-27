@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.json && webpack --progress --hot --config ./webpack.config.js --mode production",
     "start": "tsc -b tsconfig.json && node build/core/index.js",
-    "dev": "concurrently \"tsc -b -w tsconfig.json\" \"nodemon --ext 'ts' --trace-warnings build/core/index.js dev\"",
+    "dev": "concurrently \"tsc -b -w tsconfig.json\" \"nodemon --ext 'js' --ignore 'storage/*' --trace-warnings build/core/index.js dev\"",
     "dev1": "tsc -b tsconfig.json && node --trace-warnings build/core/index.js dev"
   },
   "private": true,

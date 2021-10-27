@@ -25,4 +25,14 @@ export const ROUTES: HttpRoute[] = [
       view: ['site', 'logout'],
       name: 'logout',
    },
+   {
+      path: '/signup',
+      template: 'root/signup',
+      name: 'signup',
+   },
+   {
+      path: '/signup',
+      view: ['site', 'signup'],
+      method: 'post',
+   },
 ];
